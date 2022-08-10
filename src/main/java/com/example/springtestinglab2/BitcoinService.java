@@ -1,15 +1,21 @@
 package com.example.springtestinglab2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 public class BitcoinService {
+    Logger logger = LoggerFactory.getLogger(BitcoinService.class);
     public String getBitcoinPrice() {
         String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
         RestTemplate restTemplate = new RestTemplate();
 
         BitcoinData result = restTemplate.getForObject(apiURL, BitcoinData.class);
+
+        logger.info("Application is displaying bitcoin price as " + result.getData().getPriceUsd());
         return result.getData().getPriceUsd();
     }
 }
