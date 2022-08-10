@@ -20,10 +20,10 @@ public class BitcoinControllerIntegrationTest {
     @MockBean
     private BitcoinService bitcoinService;
 
-    @WithMockUser
+    @WithMockUser(username = "fakeuser", authorities = "admin")
     @Test
     void getBitcoinPrice() throws Exception{
-        mockMvc.perform(get("/bitprice"))
+        mockMvc.perform(get("/crypto/bitprice"))
                 .andDo(print())
                 .andExpect(status().isOk());
 

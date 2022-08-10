@@ -12,7 +12,7 @@ class BitcoinControllerTest {
     void getBitcoinPrice() {
         BitcoinService bitcoinService = Mockito.mock(BitcoinService.class);
         String bitcoinPrice = "12345.67";
-        BitcoinController bitcoinController = new BitcoinController(bitcoinService);
+        BitcoinController bitcoinController = new BitcoinController();
         when(bitcoinService.getBitcoinPrice()).thenReturn(bitcoinPrice);
 
         String expected= bitcoinPrice;
